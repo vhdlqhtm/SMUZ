@@ -30,7 +30,7 @@ public class MemberController {
 		System.out.println("join 페이지로 이동");
 		return "member/sm_join";
 	}
-	
+	 
 	@RequestMapping("insert.do")
 	public String insert(@ModelAttribute MemberVO vo) {
 		System.out.println("컨트롤러  insert()===========");

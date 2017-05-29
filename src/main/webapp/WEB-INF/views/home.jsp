@@ -9,6 +9,7 @@
 <body>
 <h1>
 	Hello world!  
+	깃 연동 테스트
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
