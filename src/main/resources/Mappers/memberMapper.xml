@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="member">
+							<!-- resultType 은 쿼리문의 값을 받을 파일위치 정해주는것 -->
+	<select id="sm_memberlist" resultType="com.project.smuz.model.dto.MemberVO">
+		SELECT * FROM SM_TEST
+	</select>
+	
+	<insert id="sm_memberInsert">
+		INSERT INTO SM_MEMBER VALUES (sm_seq.nextval, #{sm_id}, #{sm_password}, #{sm_name}, #{sm_birth}, #{sm_age}, #{sm_sex}, '', '', '', '', '', '', '', '')
+		 <!-- 공백란은 회원가입시 데이터를 넣지 않기 때문에 공백으로 일단 집어넣어줌 -->
+	</insert>
+
+						<!-- resultType 은 문자인지 스트링형인지 값을 넣어준다 생각하자 이건좀더 찾아보기 -->
+						<!--  as cnt 안써줘도 값 잘가져와짐 'ㅁ'! -->	
+	<select id="sm_check" resultType="Integer">
+		SELECT COUNT(*) FROM SM_MEMBER WHERE SM_ID = #{sm_id}
+	</select>
+	
+	<!-- select 는 resultType을 붙여주어야 하나봄(위에 셀렉트랑 같은데 아래꺼는 alias설정해서 짧게 만든것) -->
+	<select id="memberView" resultType="MemberVO">
+		SELECT * FROM SM_MEMBER WHERE mpk = #{mpk}
+	</select>
+	
+	<update id="memberUpdate">
+		UPDATE SM_MEMBER SET mid=#{mid}, mpw=#{mpw}, mname=#{mid} where mpk=#{mpk}
+	</update>
+	
+	<delete id="memberDelete">
+	DELETE MEMBER_TBL WHERE mpk=#{mpk}
+	</delete>
+   
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases><!-- 리눅스 alias기능 과 같음 -->
+		<typeAlias type="com.project.smuz.model.dto.MemberVO" alias="MemberVO"/>
+	</typeAliases>
+
+<!-- 사용할mapper 등록 -->
+<mappers>
+	<mapper resource="Mappers/memberMapper.xml"/>
+</mappers>
+
+</configuration>
