@@ -107,7 +107,7 @@ html::-webkit-scrollbar {
 
       <form class="w3-container" action="#">
         <div class="w3-section">
-          <label><b>아이디</b></label>
+          <label><b>아이디1</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter ID" name="usrname" required>
           <label><b>비밀번호</b></label>
           <input class="w3-input w3-border" type="text" placeholder="Enter Password" name="psw" required>
