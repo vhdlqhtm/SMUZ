@@ -130,7 +130,7 @@ html::-webkit-scrollbar {
 					href="javascript:void(0);" onclick="openNav()"><i
 					class="fa fa-bars"></i></a>
 				<a href="${path}/"	class="w3-bar-item w3-button w3-padding-large w3-theme-d4">
-				<i class="fa fa-home w3-margin-right"></i>Logo</a>
+				<i class="fa fa-home w3-margin-right"></i>로고</a>
 				<a href="#"	class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
 					title="News"><i class="fa fa-globe"></i></a>
 				<a href="${path}/import/mypage.do"	class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
