@@ -68,21 +68,25 @@ $("#sm_check").click(function() {
 	}
  
 			$.ajax({
+				
 				url : "${path}/member/sm_check.do", //url : 접근해야할 컨트롤의 아이디
 				type : "post", //type : 데이터 전송방식
 				data : {"sm_id": id}, 
 				dataType : "JSON", //dataType : 요청하는 데이터 타입
 				success : function(data) { //success : 정상적으로 함수가 읽어오면 시행 - Data명 임의로 수정가능
-					
+					//중복체크 아이디 변수
+					btn = document.getElementById('sm_check');
 					if(data=="1"){ //id_check 컨트롤러에서 던져주는 값을비교 (String형으로 넘어옴)
 						$("#chk").addClass("fail"); // 실행시 빨간색으로 변경해줌(style에 지정함)
 						document.getElementById("chk").innerHTML="이미 가입되어 있는 아이디 입니다."; //해당메시지 보여짐
 						//아이디값이 중복되면 아이디란을 초기화 시켜줌.
 						document.getElementById("userid").value="";
 					}else{
+						 disabled="disabled"
 						$("#chk").removeClass("fail");
 						$("#chk").addClass("true");
 						document.getElementById("chk").innerHTML="사용가능 아이디 입니다.";
+						btn.disabled = 'Y';
 					}
 					
 				}
@@ -91,6 +95,12 @@ $("#sm_check").click(function() {
 			return false;
 			
 		});
+	//아이디 입력란 초기화
+	$('#userid').click(function(){
+		document.getElementById("userid").value="";
+		$("#sm_check").attr("disabled", false);
+	});
+		
     //datepicker 설정
     $("#datepicker").datepicker({
     	changeMonth: true,  //달을 선택할수 있는 셀렉트박스
@@ -118,15 +128,63 @@ $("#sm_check").click(function() {
     $('#pass_check').keyup(function(){
     	   if($('#pass').val()!=$('#pass_check').val()){
     	    $('font[name=check]').text('');
-    	    $('font[name=check]').html("암호틀림");
+    	    $('font[name=check]').html("암호가 맞지 않습니다.");
+    	    document.getElementById("#pass").value="";
+    	    document.getElementById("#pass_check").value="";
     	   }else{
     	    $('font[name=check]').text('');
-    	    $('font[name=check]').html("암호맞음");
+    	    $('font[name=check]').html("확인완료");
     	   }
     	  }); //#chpass.keyup
+    	  
+    	  
+    	  $("#sm_submit").click(function() {
+    		   /* if(!$("#userid").val()){
+    			  alert("아이디를 입력하세요.");
+    			  return false;
+    		  } 
+    		  
+    		  //중복체크 버튼이 눌렸는지 확인
+    		  if(!$("#sm_check").is(":disabled")){
+    			  alert("아이디 중복확인을 해주세요.");
+    			  return false;
+    		  } */
+    		  if(!$("#pass").val()){
+    			  alert("비밀번호를 입력해주세요.");
+    			  return false;
+    		  }
+    		  
+    		  if(!$('#pass_check').val()){
+    			  alert("비밀번호 확인란을 입력해주세요.");
+    			  return false;
+    		  }
+    		  
+    		  if($('#pass').val() != $('#pass_check').val()){
+    			  alert("비밀번호가 맞지 않습니다.");
+    			  return false;
+    		  }
+    		  /* if(!$("#name").val()){
+    			  alert("이름을 입력하세요.");
+    			  return false;
+    		  } 
+    		  if(!$("#datepicker").val()){
+    			  alert("생년월일을 입력하세요");
+    			  return false;
+    		  } 
+    		  //라디오 버튼 체크 여부 확인
+    		  if(!$(':input:radio[name=sm_sex]:checked').val()) {
+    			    alert("섹션을 선택해주세요.");
+    		  }  */
 
- 
+
+    		  
+    	  });
+	
 });
+
+function inputIdChk(){
+	
+}
 </script>
 </head>
 
@@ -137,10 +195,10 @@ $("#sm_check").click(function() {
   <p>The for</p>
   <form method="post" action="${path}/member/insert.do">
     <div class="form-group">
-    
+<button id="test" name="id_test" type="button" class="btn">회원가입_테스트버튼</button>    
       <label for="usr">아이디</label>
-      <input type="text" class="form-control" name="sm_id" id="userid" placeholder="아이디">
-      <button type="button" class="btn" id ="sm_check">ID중복확인</button>
+      <input type="text" class="form-control" name="sm_id" id="userid" placeholder="아이디" onkeydown="">
+      <button type="button" class="btn" id ="sm_check" >ID중복확인</button>
       <!-- <input type="hidden" name="idDuplication" value="idUncheck">  -->
       <p id="chk"></p> <!-- 위에서 innerHTML 을 이용하면  내용이 입력된다.  -->
     </div>
@@ -159,7 +217,7 @@ $("#sm_check").click(function() {
     
     <div class="form-group">
       <label for="pwd">이름</label>
-      <input type="text" class="form-control" name="sm_name" placeholder="이름">
+      <input type="text" class="form-control" id="name" name="sm_name" placeholder="이름">
     </div>
     
     <div class="form-group">
@@ -176,10 +234,10 @@ $("#sm_check").click(function() {
     <div class="form-group">
     <label for="usr">성별</label>
     <label class="radio-inline">
-      <input type="radio" name="sm_sex" value="남">남성
+      <input type="radio" id="sex" name="sm_sex" value="남">남성
     </label>
     <label class="radio-inline">
-      <input type="radio" name="sm_sex" value="여">여성
+      <input type="radio" id="sex" name="sm_sex" value="여">여성
     </label>
     </div>
     
