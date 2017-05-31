@@ -6,10 +6,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 /*
  * 
- * 2017-05-31
+ * 2017-05-31(edit)
  * - Import Controller -
- * 오직 임포트를 위한 컨트롤러 단입니다.
- * 수정 시 문의 
+ * only import controller page
  * 
  */
 
@@ -33,6 +32,7 @@ public class importController {
 	}
 	/*join form include end*/
 	
+	/*mypage form include*/
 	@RequestMapping("mypage.do")
 	public ModelAndView mypage(ModelAndView mv){
 		
@@ -46,5 +46,6 @@ public class importController {
 		mv.addObject("include","subpage/mypage/index.jsp");
 		return mv;
 	}
+	/*mypage form include end*/
 	
 }

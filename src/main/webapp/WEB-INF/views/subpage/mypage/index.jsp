@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <title>SMUZ</title>
@@ -18,10 +18,10 @@
 	text-align: center;
 }
 </style>
-<script>
-
-</script>
 <body>
+
+	<!-- 2017-05-25 (html & script) -->
+
 	<div class="w3-container">
 		<jsp:include page="hedaer.jsp" />
 		<div class="w3-row">
@@ -66,20 +66,26 @@
 	</div>
 
 	<script>
-function openCity(evt, cityName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("tab");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-     tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-border-red";
-}
-</script>
+		/*
+		 * 2017-05-29
+		 * tab page event script
+		 */
+	
+		function openCity(evt, cityName) {
+			var i, x, tablinks;
+			x = document.getElementsByClassName("tab");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablink");
+			for (i = 0; i < x.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(
+						" w3-border-red", "");
+			}
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.firstElementChild.className += " w3-border-red";
+		}
+	</script>
 
 </body>
 </html>

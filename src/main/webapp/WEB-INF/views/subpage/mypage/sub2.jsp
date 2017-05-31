@@ -55,6 +55,11 @@ body::-webkit-scrollbar {
 </style>
 </head>
 <body class="w3-light-grey">
+	
+	<!-- 2017-05-25 (html & script) -->
+
+	<!-- Follower feed (edit) -->
+
 	<div class="w3-row-padding" style="max-width: 1080px">
 		<br>
 		<div class="w3-half">
@@ -290,6 +295,11 @@ body::-webkit-scrollbar {
 						class="form-control" placeholder="댓글을 입력해주세요."> <br>
 				</div>
 				<script>
+					/*
+					 * 2017-05-25
+					 * recomment slideToggle event
+					 */
+				
 					$("#Comment").click(function() {
 						$(".media").slideToggle();
 					});

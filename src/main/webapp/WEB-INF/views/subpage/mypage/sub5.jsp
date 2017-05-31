@@ -34,6 +34,11 @@ a {
 }
 </style>
 <body class="w3-theme-l5">
+
+	<!-- 2017-05-25 (html & script) -->
+
+	<!-- myList & Content write(edit) -->
+
 	<!-- Page Container -->
 	<div class="w3-container w3-content"
 		style="max-width: 1400px; margin-top: 30px;">

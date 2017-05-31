@@ -90,6 +90,10 @@ html::-webkit-scrollbar {
 </head>
 <body class="w3-theme-l5">
 
+	<!-- 2017-05-30 (html & script) -->
+	
+	<!-- index form (header & right bar) edit -->
+	
 	
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
