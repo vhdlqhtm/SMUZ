@@ -137,7 +137,7 @@ $(function(){
 				</div>
 				<input type="text" class="form-control pull-right"id="id">
 				<div class="input-group-addon">
-					<a href="#" id="sm_check">중복확인</a>
+					<a href="#" id="sm_check" style="color:black">중복확인</a>
 				</div>
 			</div>
 			<p id="id_wrong" style="color:red;"></p>
