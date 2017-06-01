@@ -1,16 +1,25 @@
 package com.project.smuz.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.project.smuz.model.dto.MemberVO;
+import com.project.smuz.service.MemberService;
 
 /*
  * 
@@ -24,7 +33,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("user")
 public class UserController {
 	
-	
+	@Inject
+	MemberService sm_Service;
 	
 	/* user join data controller */
 	@RequestMapping(value="join.do", method=RequestMethod.POST)
@@ -60,6 +70,34 @@ public class UserController {
 		
 		return null;
 	}
+	
+	@RequestMapping("sm_check.do")
+	public String sm_check(@ModelAttribute MemberVO vo,
+			HttpServletResponse response){
+		
+		int count = sm_Service.sm_check(vo); //아이디 비교한값 (0 이나 1이 담겨있음)
+		System.out.println("컨트롤러 에서 확인 : " + count); //확인용
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter writer = null;
+		try {
+			writer = response.getWriter();
+			if(count == 1){
+				writer.write("1");
+			}else{
+				writer.write("0");
+			}
+			
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:/member/sm_join";
+	}
+	
 	
 	/* user join data controller end */
 	

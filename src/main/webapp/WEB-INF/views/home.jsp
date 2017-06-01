@@ -94,7 +94,6 @@ html::-webkit-scrollbar {
 	
 	<!-- index form (header & right bar) edit -->
 	
-	
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
   
@@ -129,6 +128,9 @@ html::-webkit-scrollbar {
 					class="fa fa-bars"></i></a>
 				<a href="${path}/"	class="w3-bar-item w3-button w3-padding-large w3-theme-d4">
 				<i class="fa fa-home w3-margin-right"></i>로고</a>
+				<!-- 임시테스트 -->
+				<a href="${path}/member/sm_join.do" class="w3-bar-item w3-button w3-padding-large w3-theme-d4">테스트</a>
+				
 				<a href="#"	class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
 					title="News"><i class="fa fa-globe"></i></a>
 				<a href="${path}/import/mypage.do"	class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"

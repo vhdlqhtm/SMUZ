@@ -35,6 +35,10 @@ html, body, h1, h2, h3, h4, h5 {
 .strong{
 	color:#00cc00 !important;
 }
+
+.false{
+	color:#A2A2A2 !important;
+}
 </style>
 <script>
 $(function(){
@@ -69,13 +73,36 @@ $(function(){
 				$("#sm_check").css({"pointer-events":"none"}).click(function(e){e.preventDefault();});
 			}else if(!regex.test(val)){
 				$("#id_wrong").html("아이디는 영문, 숫자 총 4자 이상 15자 이하로 작성해주세요.");
-				$("#id_wrong").html("아이디는 영문, 숫자 총 5자 이상 15자 이하로 작성해주세요.");
 				$("#sm_check").css({"pointer-events":"none"}).click(function(e){e.preventDefault();});
 			}else{
 				$("#id_wrong").html("");
 				$("#sm_check").css({"pointer-events":"auto"}).click(function(e){
 					/*ajax이벤트를 걸어주시면 됩니다.*/
 					
+					$.ajax({
+						url : "${path}/member/sm_check.do",
+						type : "post", 
+						data : {"sm_id": val},
+						dataType : "JSON",
+						success : function(data) {
+							if(data=="1"){
+								//해당 명령어가 실행될시 색을 변경해주는(css)클래스를 초기화시켜줌(removeClass가)
+							//$("#id_wrong").html(val+" "+"이미 사용중입니다.").removeClass("strong");
+							$('#sm_check').removeClass("false");
+							document.getElementById("id_wrong").innerHTML="이미 가입되어 있는 아이디 입니다.";
+							document.getElementById("id").value="";
+							}else{
+								//클래스를 add해서 글씨 색을 다시 지정
+							$('#sm_check').removeClass("false");
+							$("#id_wrong").html("사용가능한 아이디 입니다.").addClass("strong");
+							$('#sm_check').css({"pointer-events":"none"}).addClass("false");
+							
+							//$("#sm_check").bind('click', false);
+							
+							}
+						}
+					});
+					return false;
 				});
 			}
 	
@@ -88,13 +115,13 @@ $(function(){
 		$("#submit").click(function(){
 			
 		//전체목록 유효성 검사
-		  if(!$("#userid").val()){
+		  if(!$("#id").val()){
 			  alert("아이디를 입력하세요.");
 			  return false;
 		  } 
 		  
 		  //중복체크 버튼이 눌렸는지 확인
-		  if(!$("#sm_check").is(":disabled")){
+		  if(!$("#sm_check").is(".false")){
 			  alert("아이디 중복확인을 해주세요.");
 			  return false;
 		  } 
@@ -181,10 +208,11 @@ $(function(){
 				</div>
 				<input type="text" class="form-control pull-right"id="id">
 				<div class="input-group-addon">
-					<a href="#" id="sm_check" style="color:black">중복확인</a>
+					<button type="button" id="sm_check" style="display: inline-block; background: none; border: none">중복확인</button>
 				</div>
 			</div>
 			<p id="id_wrong" style="color:red;"></p>
+			<!-- <p id="id_ok" style="color:blue;"></p> -->
 			
 			<label><b>비밀번호</b></label>
 			<div class="input-group">
