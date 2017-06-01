@@ -66,8 +66,10 @@ $(function(){
 			
 			if(val==""||val==null){
 				$("#id_wrong").html("아이디를 입력해주세요.");
+				$("#sm_check").css({"pointer-events":"none"}).click(function(e){e.preventDefault();});
 			}else if(!regex.test(val)){
 				$("#id_wrong").html("아이디는 영문, 숫자 총 5자 이상 15자 이하로 작성해주세요.");
+				$("#sm_check").css({"pointer-events":"none"}).click(function(e){e.preventDefault();});
 			}else{
 				$("#id_wrong").html("");
 			}
