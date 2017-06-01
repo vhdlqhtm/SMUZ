@@ -38,7 +38,11 @@ body::-webkit-scrollbar {
 }
 </style>
 <body class="w3-theme-l5">
-
+	
+	<!-- 2017-05-25 (html & script) -->
+	
+	<!-- for myPage header(edit) -->
+	
 	<div class="w3-container w3-teals">
 		<div class="w3-padding-16">
 			<img src="${path}/resources/img/profile.jpg" class="w3-left w3-circle w3-margin-right"
