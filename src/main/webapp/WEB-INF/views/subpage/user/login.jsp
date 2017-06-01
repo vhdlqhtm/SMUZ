@@ -67,7 +67,7 @@ $(function(){
 			if(val==""||val==null){
 				$("#id_wrong").html("아이디를 입력해주세요.");
 			}else if(!regex.test(val)){
-				$("#id_wrong").html("아이디는 영문, 숫자 총 5자 이상 15자 이하로 작성해주세요.");
+				$("#id_wrong").html("아이디는 영문, 숫자 총 4자 이상 15자 이하로 작성해주세요.");
 			}else{
 				$("#id_wrong").html("");
 			}
