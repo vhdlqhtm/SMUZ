@@ -33,7 +33,7 @@ public class MemberController {
 	 
 	@RequestMapping("insert.do")
 	public String insert(@ModelAttribute MemberVO vo) {
-		System.out.println("컨트롤러  insert()===========");
+		System.out.println("컨트롤러  insert===========");
 		System.out.println(vo.getSm_id());
 		System.out.println(vo.getSm_name());
 		System.out.println(vo.getSm_password());

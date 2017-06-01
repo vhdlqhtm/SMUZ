@@ -71,6 +71,7 @@ $(function(){
 			}else{
 				$("#id_wrong").html("");
 			}
+	
 	});	
 	/*
 	 * data pass
@@ -78,6 +79,42 @@ $(function(){
 	 */
 		var id, password, name, birthday, sex, music, music_data, cnt;
 		$("#submit").click(function(){
+			
+		//전체목록 유효성 검사
+		  if(!$("#userid").val()){
+			  alert("아이디를 입력하세요.");
+			  return false;
+		  } 
+		  
+		  //중복체크 버튼이 눌렸는지 확인
+		  if(!$("#sm_check").is(":disabled")){
+			  alert("아이디 중복확인을 해주세요.");
+			  return false;
+		  } 
+		  if(!$("#pass").val()){
+			  alert("비밀번호를 입력해주세요.");
+			  return false;
+		  }
+		  
+		  if(!$('#pass_check').val()){
+			  alert("비밀번호 확인란을 입력해주세요.");
+			  return false;
+		  }
+		  
+		  if($('#pass').val() != $('#pass_check').val()){
+			  alert("비밀번호가 맞지 않습니다.");
+			  return false;
+		  }
+		   if(!$("#name").val()){
+			  alert("이름을 입력하세요.");
+			  return false;
+		  } 
+		  if(!$("#datepicker").val()){
+			  alert("생년월일을 입력하세요");
+			  return false;
+		  } 
+			
+			
 			// check data array
 			music = $(".music");
 			music_data = Array();
@@ -97,7 +134,7 @@ $(function(){
 			
 			// data pass ajax
 			var alldata = {'id':id, 'password':password, 'name':name, 'birthday':birthday, 'sex':sex, 'music':music_data};
-			
+								
 			$.ajax({
 				url:"${path}/user/join.do",
 				type:"post",
