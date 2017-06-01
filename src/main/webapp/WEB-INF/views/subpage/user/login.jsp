@@ -135,7 +135,10 @@ $(function(){
 				<div class="input-group-addon">
 					<i class="fa fa-user-circle-o"></i>
 				</div>
-				<input type="text" class="form-control pull-right" id="id">
+				<input type="text" class="form-control pull-right"id="id">
+				<div class="input-group-addon">
+					<a href="#" id="sm_check">중복확인</a>
+				</div>
 			</div>
 			<p id="id_wrong" style="color:red;"></p>
 			
