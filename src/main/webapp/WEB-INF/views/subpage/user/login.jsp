@@ -66,8 +66,14 @@ $(function(){
 			
 			if(val==""||val==null){
 				$("#id_wrong").html("아이디를 입력해주세요.");
+				$("#sm_check").css({"pointer-events":"none"}).click(function(e){e.preventDefault();});
 			}else if(!regex.test(val)){
+<<<<<<< HEAD
 				$("#id_wrong").html("아이디는 영문, 숫자 총 4자 이상 15자 이하로 작성해주세요.");
+=======
+				$("#id_wrong").html("아이디는 영문, 숫자 총 5자 이상 15자 이하로 작성해주세요.");
+				$("#sm_check").css({"pointer-events":"none"}).click(function(e){e.preventDefault();});
+>>>>>>> branch 'master' of https://github.com/vhdlqhtm/SMUZ.git
 			}else{
 				$("#id_wrong").html("");
 			}
@@ -174,7 +180,7 @@ $(function(){
 				</div>
 				<input type="text" class="form-control pull-right"id="id">
 				<div class="input-group-addon">
-					<a href="#" id="sm_check">중복확인</a>
+					<a href="#" id="sm_check" style="color:black">중복확인</a>
 				</div>
 			</div>
 			<p id="id_wrong" style="color:red;"></p>
