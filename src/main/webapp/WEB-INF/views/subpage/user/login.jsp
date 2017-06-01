@@ -73,6 +73,10 @@ $(function(){
 				$("#sm_check").css({"pointer-events":"none"}).click(function(e){e.preventDefault();});
 			}else{
 				$("#id_wrong").html("");
+				$("#sm_check").css({"pointer-events":"auto"}).click(function(e){
+					/*ajax이벤트를 걸어주시면 됩니다.*/
+					
+				});
 			}
 	
 	});	
