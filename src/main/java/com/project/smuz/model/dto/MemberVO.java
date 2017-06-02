@@ -10,8 +10,15 @@ public class MemberVO {
    private String sm_birth;
    private int sm_age;
    private int sm_check;
+   private String sm_music;
    
    
+public String getSm_music() {
+	return sm_music;
+}
+public void setSm_music(String sm_music) {
+	this.sm_music = sm_music;
+}
 public int getSm_check() {
 	return sm_check;
 }

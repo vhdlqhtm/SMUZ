@@ -16,7 +16,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${path}/resources/css/datepicker.css">
-<script src="${path}/resources/js/bootstrap-datepicker.js"></script>
+<%-- <script src="${path}/resources/js/bootstrap-datepicker.js"></script> --%>
 <script src="${path}/resources/js/passwordscheck.js"></script>
 <style>
 html, body, h1, h2, h3, h4, h5 {

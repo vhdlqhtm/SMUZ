@@ -47,15 +47,23 @@ public class UserController {
 		System.out.println("==           ==");
 		System.out.println("===============");
 		
-		String id = (String)data.get("id");
-		String password = (String)data.get("id");
-		String name = (String)data.get("name");
-		String birthday = (String)data.get("birthday");
-		String sex = (String)data.get("sex");
-		List<String> m = (List<String>)data.get("music");
+		String id = (String)data.get("sm_id");
+		String password = (String)data.get("sm_password");
+		String name = (String)data.get("sm_name");
+		String birthday = (String)data.get("sm_birth");
+		String age = (String)data.get("sm_age");
+		String sex = (String)data.get("sm_sex");
+		List<String> m = (List<String>)data.get("sm_music");
 		for(int i = 0; i < m.size(); i++){
 			System.out.println(m.get(i));
 		}
+		System.out.println(id);
+		System.out.println(password);
+		System.out.println(name);
+		System.out.println(birthday);
+		System.out.println(age);
+		System.out.println(sex);
+		System.out.println(m);
 		
 		/* 
 		 * -- data format --

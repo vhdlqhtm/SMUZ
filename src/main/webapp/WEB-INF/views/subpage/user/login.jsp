@@ -16,7 +16,12 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${path}/resources/css/datepicker.css">
-<script src="${path}/resources/js/bootstrap-datepicker.js"></script>
+<%-- <script src="${path}/resources/js/bootstrap-datepicker.js"></script> --%>
+<!-- datepicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<!-- ---------------------->
 <script src="${path}/resources/js/passwordscheck.js"></script>
 <style>
 html, body, h1, h2, h3, h4, h5 {
@@ -37,7 +42,7 @@ html, body, h1, h2, h3, h4, h5 {
 }
 
 .false{
-	color:#A2A2A2 !important;
+	color:#FF0000 !important;
 }
 </style>
 <script>
@@ -85,19 +90,19 @@ $(function(){
 						data : {"sm_id": val},
 						dataType : "JSON",
 						success : function(data) {
+							btn = document.getElementById('sm_check');
 							if(data=="1"){
 								//해당 명령어가 실행될시 색을 변경해주는(css)클래스를 초기화시켜줌(removeClass가)
 							//$("#id_wrong").html(val+" "+"이미 사용중입니다.").removeClass("strong");
+							//document.getElementById("id_wrong").innerHTML="이미 가입되어 있는 아이디 입니다.";
+							$("#id_wrong").html("이미 사용중인 아이디 입니다.").addClass("false");
 							$('#sm_check').removeClass("false");
-							document.getElementById("id_wrong").innerHTML="이미 가입되어 있는 아이디 입니다.";
-							document.getElementById("id").value="";
 							}else{
+								disabled="disabled";
 								//클래스를 add해서 글씨 색을 다시 지정
 							$('#sm_check').removeClass("false");
 							$("#id_wrong").html("사용가능한 아이디 입니다.").addClass("strong");
-							$('#sm_check').css({"pointer-events":"none"}).addClass("false");
-							
-							//$("#sm_check").bind('click', false);
+							btn.disabled = 'Y'
 							
 							}
 						}
@@ -107,11 +112,47 @@ $(function(){
 			}
 	
 	});	
+	
+	//아이디 입력란 초기화
+		$('#id').click(function(){
+			document.getElementById("id").value="";
+			$("#sm_check").attr("disabled", false);
+		});
+	
+		 //datepicker 설정
+	    $("#datepicker").datepicker({
+	    	changeMonth: true,  //달을 선택할수 있는 셀렉트박스
+	        changeYear: true, //년도를 선택할수 있는 셀렉트박스
+	        dateFormat: 'yy-mm-dd',
+	        minDate: '-100y', //최대로 표시할수 있는 년도수
+	        yearRange: 'c-100:today', //년도 셀렉트 박스 스크롤에 표시할 년도수(현재년도부터 -100년까지만표시)
+	    	//changeMonth 이 true 여야 아래옵션이 사용가능하다.
+	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
+	        onSelect: function(dateText, inst) { 
+	        var date = $(this).datepicker('getDate'),
+	        //day  = date.getDate(),  //현재 필요없어서 주석처리해놓음
+	        //month = date.getMonth() + 1,              
+	        year =  date.getFullYear(); //datepicker에서 선택한 년도 가져오는값
+	        //현재날짜 계산
+	        var now = new Date(); //Date 객체 생성 해서 변수에 담음
+	        var now_year = now.getFullYear(); // 현재 연도를 뽑아 담음
+	        var age = (now_year - year) + 1; // 현재연도 - 선택년도 + 1
+	        document.getElementById('age').value = age; //현재 나이가 나옴
+	        alert(age)
+	        }
+	    });
+		 
+	    $("#test").click(function(){
+			 alert($("#sex").val());
+		 });
+		
+	
 	/*
 	 * data pass
 	 * dataType Json
 	 */
-		var id, password, name, birthday, sex, music, music_data, cnt;
+		var id, password, name, birthday, sex, age, music, music_data, cnt;
 		$("#submit").click(function(){
 			
 		//전체목록 유효성 검사
@@ -121,21 +162,21 @@ $(function(){
 		  } 
 		  
 		  //중복체크 버튼이 눌렸는지 확인
-		  if(!$("#sm_check").is(".false")){
+		  if(!$("#sm_check").is(":disabled")){
 			  alert("아이디 중복확인을 해주세요.");
 			  return false;
 		  } 
-		  if(!$("#pass").val()){
+		  if(!$("#password").val()){
 			  alert("비밀번호를 입력해주세요.");
 			  return false;
 		  }
 		  
-		  if(!$('#pass_check').val()){
+		  if(!$('#password_checked').val()){
 			  alert("비밀번호 확인란을 입력해주세요.");
 			  return false;
 		  }
 		  
-		  if($('#pass').val() != $('#pass_check').val()){
+		  if($('#password').val() != $('#password_checked').val()){
 			  alert("비밀번호가 맞지 않습니다.");
 			  return false;
 		  }
@@ -146,28 +187,34 @@ $(function(){
 		  if(!$("#datepicker").val()){
 			  alert("생년월일을 입력하세요");
 			  return false;
-		  } 
+		  }
 			
 			
 			// check data array
 			music = $(".music");
 			music_data = Array();
 			cnt = 0;
+		 //체크박스 선택 여부 확인
 			for(var i = 0; i < music.length; i++){
 				if(music[i].checked == true){
 					music_data[cnt] = music[i].value;
 					cnt++;
 				}
 			}
+		 	if(music_data.length < 3){
+		 		alert('3개이상 체크해주세요');
+		 		return false;
+		 	}
 			
 			id = $("#id").val();
 			password = $("#password").val();
 			name = $("#name").val();
-			birthday = $("#reservation").val();
+			birthday = $("#datepicker").val();
+			age = $("#age").val();
 			sex = $("#sex").val();
 			
 			// data pass ajax
-			var alldata = {'id':id, 'password':password, 'name':name, 'birthday':birthday, 'sex':sex, 'music':music_data};
+			var alldata = {'sm_id':id, 'sm_password':password, 'sm_name':name, 'sm_birth':birthday, 'sm_age':age, 'sm_sex':sex, 'sm_music':music_data};
 								
 			$.ajax({
 				url:"${path}/user/join.do",
@@ -208,6 +255,7 @@ $(function(){
 				</div>
 				<input type="text" class="form-control pull-right"id="id">
 				<div class="input-group-addon">
+				<button type="button" id="test" style="display: inline-block; background: none; border: none">테스트</button>
 					<button type="button" id="sm_check" style="display: inline-block; background: none; border: none">중복확인</button>
 				</div>
 			</div>
@@ -246,10 +294,12 @@ $(function(){
 				<div class="input-group-addon">
 					<i class="fa fa-calendar"></i>
 				</div>
-				<input type="text" class="form-control pull-right" id="reservation">
-				<script>
-                  $('#reservation').datepicker();
-                  </script>
+				<input type="text" class="form-control pull-right" id="datepicker" name="sm_birth">
+			</div>
+			
+			<div class="input-group">
+			<!-- 나이 (쓸것이지만 회원가입화면에는 안보이는게 좋으니 숨겨둠) -->
+			<input type="hidden" id="age" name="sm_age">
 			</div>
 			<br>
 
