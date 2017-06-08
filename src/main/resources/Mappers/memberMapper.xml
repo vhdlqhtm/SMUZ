@@ -7,11 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 							<!-- resultType 은 쿼리문의 값을 받을 파일위치 정해주는것 -->
 	<select id="sm_memberlist" resultType="com.project.smuz.model.dto.MemberVO">
-		SELECT * FROM SM_TEST
+		SELECT SM_ID, SM_PASSWORD FROM SM_MEMBER
+	</select>
+	
+	<select id="sm_loginCheck" resultType="MemberVO">
+		SELECT * FROM SM_MEMBER WHERE SM_ID = #{sm_id} AND SM_PASSWORD = #{sm_password}
 	</select>
 	
 	<insert id="sm_memberInsert">
-		INSERT INTO SM_MEMBER VALUES (sm_seq.nextval, #{sm_id}, #{sm_password}, #{sm_name}, #{sm_birth}, #{sm_age}, #{sm_sex}, '', '', '', '', '', '', '', '')
+		INSERT INTO SM_MEMBER VALUES (sm_seq.nextval, #{sm_id}, #{sm_password}, #{sm_name}, #{sm_birth}, #{sm_age}, #{sm_sex}, #{sm_music}, '', '', '', '', '', '', '', '')
 		 <!-- 공백란은 회원가입시 데이터를 넣지 않기 때문에 공백으로 일단 집어넣어줌 -->
 	</insert>
 

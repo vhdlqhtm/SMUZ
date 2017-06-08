@@ -13,10 +13,10 @@ public class MemberVO {
    private String sm_music;
    
    
-public String getSm_music() {
+public String getsm_music() {
 	return sm_music;
 }
-public void setSm_music(String sm_music) {
+public void setsm_music(String sm_music) {
 	this.sm_music = sm_music;
 }
 public int getSm_check() {

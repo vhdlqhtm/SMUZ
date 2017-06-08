@@ -7,6 +7,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class MemberController {
 		System.out.println("join 페이지로 이동");
 		return "member/sm_join";
 	}
-	 
+	
 	@RequestMapping("insert.do")
 	public String insert(@ModelAttribute MemberVO vo) {
 		System.out.println("컨트롤러  insert===========");

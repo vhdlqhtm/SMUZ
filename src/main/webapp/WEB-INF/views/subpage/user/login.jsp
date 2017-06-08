@@ -85,7 +85,7 @@ $(function(){
 					/*ajax이벤트를 걸어주시면 됩니다.*/
 					
 					$.ajax({
-						url : "${path}/member/sm_check.do",
+						url : "${path}/user/sm_check.do",
 						type : "post", 
 						data : {"sm_id": val},
 						dataType : "JSON",
@@ -139,7 +139,6 @@ $(function(){
 	        var now_year = now.getFullYear(); // 현재 연도를 뽑아 담음
 	        var age = (now_year - year) + 1; // 현재연도 - 선택년도 + 1
 	        document.getElementById('age').value = age; //현재 나이가 나옴
-	        alert(age)
 	        }
 	    });
 		 
@@ -162,7 +161,7 @@ $(function(){
 		  } 
 		  
 		  //중복체크 버튼이 눌렸는지 확인
-		  if(!$("#sm_check").is(":disabled")){
+		   if(!$("#sm_check").is(":disabled")){
 			  alert("아이디 중복확인을 해주세요.");
 			  return false;
 		  } 
@@ -226,10 +225,9 @@ $(function(){
 					alert(request+"---"+status+"---"+error);
 				}
 			});
-			$("#join_form").attr({action:'${path}/user/join.do', method:'post'}).submit();
 			alert("전송 완료");
 			
-			location.href="${path}/";
+			location.href='${path}/';
 		});
 	});
 </script>
@@ -255,7 +253,6 @@ $(function(){
 				</div>
 				<input type="text" class="form-control pull-right"id="id">
 				<div class="input-group-addon">
-				<button type="button" id="test" style="display: inline-block; background: none; border: none">테스트</button>
 					<button type="button" id="sm_check" style="display: inline-block; background: none; border: none">중복확인</button>
 				</div>
 			</div>

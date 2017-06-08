@@ -102,12 +102,12 @@ html::-webkit-scrollbar {
         <img src="${path}/resources/img/profile.jpg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
       </div>
 
-      <form class="w3-container" action="#">
+      <form class="w3-container" method="post" action="${path}/user/login.do">
         <div class="w3-section">
           <label><b>아이디</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter ID" name="usrname" required>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter ID" name="sm_id" required>
           <label><b>비밀번호</b></label>
-          <input class="w3-input w3-border" type="text" placeholder="Enter Password" name="psw" required>
+          <input class="w3-input w3-border" type="text" placeholder="Enter Password" name="sm_password" required>
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">로그인</button>
           <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> 로그인 정보 기억하기
         </div>

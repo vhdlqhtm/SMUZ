@@ -3,6 +3,7 @@ package com.project.smuz.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,9 @@ public class MemberServiceImpl implements MemberService {
 	MemberDAO memberdao;
 	
 	@Override
-	public List<MemberVO> sm_list() {
-		List<MemberVO> list = memberdao.sm_list();
-		return list;
+	public List<MemberVO> sm_memberlist() {
+		List<MemberVO> sm_memberlist = memberdao.sm_memberlist();
+		return sm_memberlist;
 	}
 
 	@Override
@@ -29,6 +30,13 @@ public class MemberServiceImpl implements MemberService {
 	public int sm_check(MemberVO vo) {
 		return memberdao.sm_check(vo);
 	}
+
+	@Override
+	public MemberVO sm_loginCheck(MemberVO vo) {
+		return memberdao.sm_loginCheck(vo);
+	}
+
+	
 
 
 }

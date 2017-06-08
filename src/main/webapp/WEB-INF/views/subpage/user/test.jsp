@@ -237,6 +237,8 @@ function inputIdChk(){
     </label>
     </div>
     
+    
+    
     <!-- 체크박스 -->
     <!-- <div class="form-group">
     <label for="usr">자주듣는 장르 선택(3개 이상)</label>
@@ -252,7 +254,6 @@ function inputIdChk(){
     </div> -->
     
     <div>
-    
       <button id="sm_submit" type="submit" class="btn btn-primary active">회원가입</button>    
     </div>
     <!-- 회원가입에 보면 disabled있는데 이러면 클릭할수없음 약관동의하면 active로 바꿔주는기능해주기 -->
