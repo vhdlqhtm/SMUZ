@@ -38,16 +38,9 @@ import com.project.smuz.service.MemberService;
 @Controller
 @RequestMapping("user")
 public class UserController {
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Inject
 	MemberService sm_Service;
-	
-	//로그인 세션 테스트
-	@RequestMapping("test.do")
-	public String test(){
-		System.out.println("join 페이지로 이동");
-		return "/user/test";
-	}
 	
 	/* user join data controller */
 	@RequestMapping(value="join.do", method=RequestMethod.POST)
@@ -115,11 +108,10 @@ public class UserController {
 			writer.flush();
 			writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return "redirect:/member/sm_join";
+		return "redirect:/";
 	}
 	
 /*	@RequestMapping("view.do")
@@ -131,33 +123,37 @@ public class UserController {
 	}*/
 	
 	//로그인 체크!!!!!
-	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public ModelAndView loginCheck(@ModelAttribute MemberVO vo, HttpSession session, HttpServletResponse response){
-		logger.debug("=============loginCheck");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/");
-		System.out.println(sm_Service.sm_loginCheck(vo));
-		vo = sm_Service.sm_loginCheck(vo);
-		if (vo != null ){
-			session.setAttribute("sm_session", vo);
-			System.out.println("로그인 되었습니다.");
-		}else{
-			 try {
-				response.sendRedirect("/login.do");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}  
-		}
-		//웹페이지에서 밭은 아이디, 패스워드 일치시 admin 세션key 생성
-		/*session.setAttribute("id", vo.getSm_id());
-		session.setAttribute("pw", vo.getSm_password());*/
-		System.out.println("접속정보 전송완료!");
-		System.out.println(vo.getSm_id());
-		System.out.println(vo.getSm_password());
+	@RequestMapping("login_check.do")
+	public String loginCheck(@ModelAttribute MemberVO vo,
+			HttpServletResponse response){
 		
-		return mav;
+		int count = sm_Service.sm_loginCheck(vo); //아이디 비교한값 (0 이나 1이 담겨있음)
+		System.out.println("컨트롤러 에서 확인 : " + count); //확인용
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter writer = null;
+		try {
+			writer = response.getWriter();
+			if(count == 1){
+				writer.write("1");
+			}else{
+				writer.write("0");
+			}
+			
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/";
 	}
+	
+/*	@RequestMapping("sm_login.do")
+	public String join(){
+		System.out.println("login 페이지로 이동");
+		return "user/UserLogin";
+	}*/
 	
 	/* user join data controller end */
 	

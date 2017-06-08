@@ -48,4 +48,19 @@ public class importController {
 	}
 	/*mypage form include end*/
 	
+	//로그인
+	@RequestMapping("sm_login.do")
+	public ModelAndView login(ModelAndView mv){
+		
+		System.out.println("===============");
+		System.out.println("==           ==");
+		System.out.println("== join form ==");
+		System.out.println("==           ==");
+		System.out.println("===============");
+		
+		mv.setViewName("home");
+		mv.addObject("include","subpage/user/UserLogin.jsp");
+		return mv;
+	}
+	
 }

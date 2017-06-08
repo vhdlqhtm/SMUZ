@@ -10,9 +10,16 @@ public class MemberVO {
    private String sm_birth;
    private int sm_age;
    private int sm_check;
+   private int sm_loginCheck;
    private String sm_music;
    
    
+public int getSm_loginCheck() {
+	return sm_loginCheck;
+}
+public void setSm_loginCheck(int sm_loginCheck) {
+	this.sm_loginCheck = sm_loginCheck;
+}
 public String getsm_music() {
 	return sm_music;
 }

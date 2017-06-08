@@ -10,8 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT SM_ID, SM_PASSWORD FROM SM_MEMBER
 	</select>
 	
-	<select id="sm_loginCheck" resultType="MemberVO">
-		SELECT * FROM SM_MEMBER WHERE SM_ID = #{sm_id} AND SM_PASSWORD = #{sm_password}
+	<select id="sm_loginCheck" resultType="Integer">
+		SELECT COUNT(*) FROM SM_MEMBER WHERE SM_ID = #{sm_id} AND SM_PASSWORD = #{sm_password}
 	</select>
 	
 	<insert id="sm_memberInsert">

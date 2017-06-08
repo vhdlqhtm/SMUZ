@@ -36,7 +36,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberVO sm_loginCheck(MemberVO vo) {
+	public int sm_loginCheck(MemberVO vo) {
 		return sqlSession.selectOne("member.sm_loginCheck", vo);
 	}
 

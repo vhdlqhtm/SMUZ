@@ -32,7 +32,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO sm_loginCheck(MemberVO vo) {
+	public int sm_loginCheck(MemberVO vo) {
 		return memberdao.sm_loginCheck(vo);
 	}
 

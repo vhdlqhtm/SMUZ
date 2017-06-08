@@ -9,6 +9,6 @@ public interface MemberDAO {
 	public List<MemberVO> sm_memberlist();
 	public void sm_insert(MemberVO vo);
 	public int sm_check(MemberVO vo);
-	public MemberVO sm_loginCheck(MemberVO vo);
+	public int sm_loginCheck(MemberVO vo);
 
 }

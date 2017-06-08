@@ -87,6 +87,34 @@ html::-webkit-scrollbar {
 	z-index: 99;
 }
 </style>
+<script type="text/javascript">
+//로그인 체크하기
+$(function(){
+//아이디 중복체크
+var id, pw;
+$("#sm_login").click(function() {
+	id = $("#userid").val();
+	pw = $("#password").val();
+
+	$.ajax({
+		url : "${path}/user/login_check.do",
+		type : "post", 
+		data : {"sm_id": id, "sm_password":pw},
+		dataType : "JSON",
+		success : function(data) {
+			if(data=="1"){
+				alert("냐냐냐냐")
+			}else{
+				alert("0번냐냐")			
+			}
+		}
+	});
+			return false;
+			});
+		});
+
+</script>
+
 </head>
 <body class="w3-theme-l5">
 
@@ -94,29 +122,30 @@ html::-webkit-scrollbar {
 	
 	<!-- index form (header & right bar) edit -->
 	
-  <div id="id01" class="w3-modal">
+  <%-- <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
   
       <div class="w3-center"><br>
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+        <span class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
         <img src="${path}/resources/img/profile.jpg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
       </div>
 
-      <form class="w3-container" method="post" action="${path}/user/login.do">
+	<!-- 로그인  -->
+      <form class="w3-container" method="post" action="${path}/user/sm_login.do">
         <div class="w3-section">
           <label><b>아이디</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter ID" name="sm_id" required>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter ID" name="sm_id" id="userid" required>
           <label><b>비밀번호</b></label>
-          <input class="w3-input w3-border" type="text" placeholder="Enter Password" name="sm_password" required>
+          <input class="w3-input w3-border" type="text" placeholder="Enter Password" name="sm_password" id="password" required>
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">로그인</button>
-          <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> 로그인 정보 기억하기
+          <input class="w3-check w3-margin-top" type="checkbox" id="sm_login" checked="checked"> 로그인 정보 기억하기
         </div>
       </form>
 
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
         <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
         <span class="w3-right w3-padding w3-hide-small">비밀번호 <a href="#">찾기</a></span>
-      </div>
+      </div> --%>
 
     </div>
   </div>
@@ -138,7 +167,8 @@ html::-webkit-scrollbar {
 					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
 					title="Messages"><i class="fa fa-envelope"></i></a>
 					
-				<a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Login</a>
+					<!-- 로그인 버튼 이있는곳!! -->
+				<a href="${path}/import/sm_login.do" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Login</a>
 				<a href="${path}/import/join.do" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Join</a>
 					
 				<!-- 지우면 안됨 -->
