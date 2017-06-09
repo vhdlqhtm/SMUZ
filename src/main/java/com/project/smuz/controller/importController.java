@@ -58,8 +58,8 @@ public class importController {
 		System.out.println("==           ==");
 		System.out.println("===============");
 		
-		mv.setViewName("home");
-		mv.addObject("include","subpage/user/UserLogin.jsp");
+		mv.setViewName("subpage/user/userlogin");
+		
 		return mv;
 	}
 	

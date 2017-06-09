@@ -88,7 +88,8 @@ html::-webkit-scrollbar {
 }
 </style>
 <script type="text/javascript">
-//로그인 체크하기
+
+/* //로그인 체크하기
 $(function(){
 //아이디 중복체크
 var id, pw;
@@ -111,7 +112,7 @@ $("#sm_login").click(function() {
 	});
 			return false;
 			});
-		});
+		}); */
 
 </script>
 
@@ -167,9 +168,12 @@ $("#sm_login").click(function() {
 					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
 					title="Messages"><i class="fa fa-envelope"></i></a>
 					
-					<!-- 로그인 버튼 이있는곳!! -->
-				<a href="${path}/import/sm_login.do" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Login</a>
+					<!-- 로그인 및 회원가입 버튼이 있는곳! (현재 로그인한 세션값을 여기에 설정해놓음) -->
+					<h3>아이디 : ${sessionScope.loginsession.sm_id}</h3>
 				<a href="${path}/import/join.do" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Join</a>
+					<!-- import컨트롤러에서 로그인페이지로 이동시켜줌 그후 로그인페이지에서 User컨트롤러를 사용해 작업함 -->
+				<a href="${path}/import/sm_login.do" id="sm_login" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Login</a>
+				<a href="${path}/user/sm_logout.do" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Logout</a>
 					
 				<!-- 지우면 안됨 -->
 				<!-- <div class="w3-dropdown-click" style="float:right;">

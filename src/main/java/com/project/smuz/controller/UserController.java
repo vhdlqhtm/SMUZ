@@ -125,16 +125,19 @@ public class UserController {
 	//로그인 체크!!!!!
 	@RequestMapping("login_check.do")
 	public String loginCheck(@ModelAttribute MemberVO vo,
-			HttpServletResponse response){
+			HttpServletResponse response, HttpServletRequest request){
 		
 		int count = sm_Service.sm_loginCheck(vo); //아이디 비교한값 (0 이나 1이 담겨있음)
-		System.out.println("컨트롤러 에서 확인 : " + count); //확인용
+		System.out.println(vo.getSm_id());
+		System.out.println(vo.getSm_password());
+		//System.out.println("컨트롤러 에서 확인 : " + count); //확인용
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = null;
 		try {
 			writer = response.getWriter();
 			if(count == 1){
+				request.getSession().setAttribute("loginsession", vo);
 				writer.write("1");
 			}else{
 				writer.write("0");
@@ -148,6 +151,15 @@ public class UserController {
 		
 		return "redirect:/";
 	}
+	
+		//로그아웃(세션 로그아웃)
+		@RequestMapping("sm_logout.do")
+		public String join(HttpServletRequest request){
+			System.out.println("로그아웃");
+			request.getSession().invalidate();
+			System.out.println("세션삭제");
+			return "redirect:/";
+		}
 	
 /*	@RequestMapping("sm_login.do")
 	public String join(){
