@@ -54,7 +54,7 @@ public class importController {
 		
 		System.out.println("===============");
 		System.out.println("==           ==");
-		System.out.println("== join form ==");
+		System.out.println("== sm_join form ==");
 		System.out.println("==           ==");
 		System.out.println("===============");
 		

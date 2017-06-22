@@ -22,7 +22,7 @@ import com.project.smuz.service.MemberService;
 
 @Controller
 @RequestMapping("member")
-public class MemberController {
+public class Exam_MemberController {
 	
 	@Inject
 	MemberService sm_Service;

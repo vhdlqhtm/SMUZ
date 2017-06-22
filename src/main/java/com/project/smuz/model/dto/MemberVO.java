@@ -11,9 +11,17 @@ public class MemberVO {
    private int sm_age;
    private int sm_check;
    private int sm_loginCheck;
+   //List test//
    private String sm_music;
+   private String sm_from;
+   ////////////////////////
    
-   
+public String getSm_from() {
+	return sm_from;
+}
+public void setSm_from(String sm_from) {
+	this.sm_from = sm_from;
+}
 public int getSm_loginCheck() {
 	return sm_loginCheck;
 }

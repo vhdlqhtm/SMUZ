@@ -36,6 +36,18 @@ public class MemberServiceImpl implements MemberService {
 		return memberdao.sm_loginCheck(vo);
 	}
 
+	@Override
+	public List<MemberVO> sm_list() {
+		List<MemberVO> sm_list = memberdao.sm_list();
+		return sm_list;
+	}
+
+	@Override
+	public void sm_listInsert(MemberVO vo) {
+		memberdao.sm_listInsert(vo);
+		
+	}
+
 	
 
 

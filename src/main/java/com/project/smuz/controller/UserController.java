@@ -160,6 +160,32 @@ public class UserController {
 			System.out.println("세션삭제");
 			return "redirect:/";
 		}
+		///////////////////////////////////////////////
+		//list테스트
+		@RequestMapping("sm_list.do") //member폴더 안에 list.jsp 가 열린다는뜻.
+		public ModelAndView list(){
+			ModelAndView mav = new ModelAndView();
+			List<MemberVO> list = sm_Service.sm_list();
+			System.out.println(list);
+			
+			//setViewName : view page
+			mav.setViewName("subpage/list/music_list");
+			//addObject : model 과 같은 역할
+			mav.addObject("list", list);
+			return mav;
+		}
+		
+		@RequestMapping("sm_listInsert.do")
+		public String insert(@ModelAttribute MemberVO vo) {
+			System.out.println("컨트롤러  insert()===========");
+			System.out.println(vo.getsm_music());
+			System.out.println(vo.getSm_from());
+			sm_Service.sm_listInsert(vo);
+			return "redirect:/user/sm_list.do";
+			//return "subpage/list/music_list";
+		}
+		
+		//////////////////////////////////////////
 	
 /*	@RequestMapping("sm_login.do")
 	public String join(){

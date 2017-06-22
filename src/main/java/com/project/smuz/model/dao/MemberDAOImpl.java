@@ -40,6 +40,19 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.sm_loginCheck", vo);
 	}
 
+	@Override
+	public List<MemberVO> sm_list() {
+		List<MemberVO> sm_list =
+				//member.memberlist 는 memberMapper.xml에 있는 내용을 가져오는것
+				sqlSession.selectList("member.sm_list");
+		return sm_list;
+	}
+
+	@Override
+	public void sm_listInsert(MemberVO vo) {
+		sqlSession.insert("member.sm_listInsert", vo);
+	}
+
 
 	
 	

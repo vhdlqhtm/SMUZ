@@ -10,5 +10,8 @@ public interface MemberDAO {
 	public void sm_insert(MemberVO vo);
 	public int sm_check(MemberVO vo);
 	public int sm_loginCheck(MemberVO vo);
-
+	//list 테스트//
+	public List<MemberVO> sm_list();
+	public void sm_listInsert(MemberVO vo);
+	///////////////////////////////////////////
 }
