@@ -34,11 +34,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="sm_listInsert">
 		INSERT INTO TLIST VALUES (sm_seq.nextval, #{sm_music}, #{sm_from})
 	</insert>
-	<!--  -->
 	
-	<update id="memberUpdate">
-		UPDATE SM_MEMBER SET mid=#{mid}, mpw=#{mpw}, mname=#{mid} where mpk=#{mpk}
+	<update id="sm_musicupdate">
+		UPDATE TLIST SET SM_MUSIC=SM_MUSIC||#{sm_music} WHERE SM_SEQ=22
 	</update>
+	<!-- 여기까지 리스트 테스트  -->
 	
 	<delete id="memberDelete">
 	DELETE MEMBER_TBL WHERE mpk=#{mpk}

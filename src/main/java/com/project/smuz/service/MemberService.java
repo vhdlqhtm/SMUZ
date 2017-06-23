@@ -15,5 +15,6 @@ public interface MemberService {
 	//list 테스트//
 	public List<MemberVO> sm_list();
 	public void sm_listInsert(MemberVO vo);
+	public void sm_musicupdate(MemberVO vo);
 	/////////////////////////////////
 }

@@ -185,6 +185,18 @@ public class UserController {
 			//return "subpage/list/music_list";
 		}
 		
+		@RequestMapping("sm_musicupdate.do")
+		public String update(@ModelAttribute MemberVO vo) {
+			System.out.println("컨트롤러  update()===========");
+			System.out.println(vo.getsm_music());
+			String sm_music = ','+vo.getsm_music();
+			System.out.println(sm_music);
+			vo.setsm_music(sm_music);
+			sm_Service.sm_musicupdate(vo);
+			return "redirect:/user/sm_list.do";
+			//return "subpage/list/music_list";
+		}
+		
 		//////////////////////////////////////////
 	
 /*	@RequestMapping("sm_login.do")

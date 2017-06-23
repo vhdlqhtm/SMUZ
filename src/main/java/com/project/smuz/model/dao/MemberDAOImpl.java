@@ -39,7 +39,8 @@ public class MemberDAOImpl implements MemberDAO {
 	public int sm_loginCheck(MemberVO vo) {
 		return sqlSession.selectOne("member.sm_loginCheck", vo);
 	}
-
+	
+	//음악 리스트 테스트
 	@Override
 	public List<MemberVO> sm_list() {
 		List<MemberVO> sm_list =
@@ -48,9 +49,15 @@ public class MemberDAOImpl implements MemberDAO {
 		return sm_list;
 	}
 
-	@Override
+	@Override //이건삭제하자 필요없을듯
 	public void sm_listInsert(MemberVO vo) {
 		sqlSession.insert("member.sm_listInsert", vo);
+	}
+
+	@Override
+	public void sm_musicupdate(MemberVO vo) {
+		sqlSession.update("member.sm_musicupdate", vo);
+		
 	}
 
 
