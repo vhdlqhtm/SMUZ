@@ -1,11 +1,3 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
-<!DOCTYPE html>
-<html>
-<head> --%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -69,74 +61,8 @@ body::-webkit-scrollbar {
 </style>
 <!-- ------------------------------------------------------------- -->
 </head>
-<script type="text/javascript">
-//로그인 체크하기
-/* $(function(){
-	var id, pw;
-	$("#sm_login").click(function(){
-		id = $("#userid").val();
-		pw = $("#password").val();
-		
-		$.ajax({
-			url : "${path}/user/login_check.do",
-			type : "post",
-			data : {"sm_id": id, "sm_password":pw},
-			dataType : "JSON",
-			success : function(data) {
-				if(data=="1"){
-					//로그인성공시 바로 메인페이지로 이동
-					location.href='${path}/';
-				}else{
-					alert("아이디 또는 비밀번호를 확인해주세요");
-				}
-			}
-		})
-		return false;
-	});
-}); */
-	
 
-</script>
 <body>
-	<%-- <h3>회원 목록</h3>
-   <table>
-      <tr>
-         <th>번호</th>
-         <th>음악</th>
-         <th>사는곳</th>
-      </tr>
-      <c:forEach var="user" items="${list}">
-         <tr>
-            <td>
-              <a href="${path}/member/view.do?mpk=${member.mpk}">
-               ${member.mid}
-               </a>
-            </td>
-            <td>${user.sm_seq}</td>
-            <td>${user.sm_music}</td>
-            <td>${user.sm_from}</td>
-         </tr>
-      </c:forEach>
-      </table> --%>
-
-	<h2>회원가입</h2>
-	<form action="${path}/user/sm_listInsert.do" method="post">
-		<table>
-			<tr>
-				<td>좋아하는 음악</td>
-				<td><input type="text" name="sm_music" value=""></td>
-			</tr>
-			<tr>
-				<td>사는곳</td>
-				<td><input type="text" name="sm_from" value=""></td>
-			</tr>
-			<tr>
-				<td align="center" colspan="2"><input type="submit"
-					value="데이터 추가!"></td>
-			</tr>
-		</table>
-	</form>
-
 	<div class="w3-container w3-card-2 w3-white w3-round w4-margin">
 
 		<br> <img src="${path}/resources/img/tiger.jpg" alt="Avatar"
@@ -157,11 +83,13 @@ body::-webkit-scrollbar {
 					var string = "${user.sm_music}";
 					var aa = "${user.sm_seq}";
 					var strArray=string.split(',');
-					//alert(strArray[0] +" "+ strArray[1]+" "+ strArray )
+					var str = strArray.join(); // 배열값 확인
+					
 					for(var i = 0; i < strArray.length; i++){
 					document.getElementById("test").innerHTML += "<a href='#' class='list-group-item' >"+strArray[i]+"</a><br/>";
-					}
+					//document.getElementById("test").innerHTML += "<a href='#' class='list-group-item' >"+str+"</a><br/>";
 					
+					}
 					});
 					
 					</script>
